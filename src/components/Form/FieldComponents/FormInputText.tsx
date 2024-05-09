@@ -1,39 +1,41 @@
+"use client";
 import { Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
-import { FormConfig } from "../Form";
+
+
 
 interface FormInputText {
 fieldName: string;
 control: any;
 type?: string;
-required?: boolean
+required?: boolean;
+label: string;
 }
 
 
 
-export const FormInputText = ({  fieldName, control, required, type}: any ) => {
+export const FormInputText = ({  fieldName, control, required, type, label, }: FormInputText ) => {
   return (
+    <div className="mb-4">
     <Controller
       name={fieldName}
       control={control}
       render={({
-        field: { onChange, value },
+        field: { onChange, value, },
         fieldState: { error },
-        formState,
       }) => (
         <TextField
           helperText={error ? error.message : null}
-          size="small"
           error={!!error}
           onChange={onChange}
           value={value}
-          fullWidth
-          label={fieldName}
+          label={label}
           variant="outlined"
           type={type}
           required={required}
         />
       )}
     />
+    </div>
   );
 };

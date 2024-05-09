@@ -1,6 +1,7 @@
+"use client";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DatePicker } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Controller } from "react-hook-form";
 
 
@@ -12,7 +13,7 @@ interface FormInputDate {
 
 export const FormInputDate = ({ fieldName, control, }: FormInputDate) => {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+<LocalizationProvider dateAdapter={AdapterDayjs} >
       <Controller
         name={fieldName}
         control={control}
@@ -20,6 +21,6 @@ export const FormInputDate = ({ fieldName, control, }: FormInputDate) => {
           <DatePicker value={value} onChange={onChange} />
         )}
       />
-    </LocalizationProvider>
+      </LocalizationProvider>
   );
 };
